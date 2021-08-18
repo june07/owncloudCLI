@@ -1,10 +1,11 @@
 {
 	"name": "owncloudcli",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "Simple CLI to upload CI/CD pipeline artifacts",
 	"main": "owncloudCLI.js",
     "bin": {
-        "owncloud": "./owncloudCLI.js"
+        "owncloud": "./owncloudCLI.js",
+        "owncloudcli": "./owncloudCLI.js"
     },
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
