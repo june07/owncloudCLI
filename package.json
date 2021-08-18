@@ -1,0 +1,36 @@
+{
+	"name": "owncloudcli",
+	"version": "1.0.1",
+	"description": "Simple CLI to upload CI/CD pipeline artifacts",
+	"main": "owncloudCLI.js",
+    "bin:": {
+        "owncloud": "./owncloudCLI.js"
+    },
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/june07/owncloudCLI.git"
+	},
+	"keywords": [
+		"owncloud",
+		"CLI",
+		"CI/CD",
+		"artifacts",
+		"pipeline",
+		"github",
+		"gitlab"
+	],
+	"author": "june07",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/june07/owncloudCLI/issues"
+	},
+	"homepage": "https://github.com/june07/owncloudCLI#readme",
+	"dependencies": {
+		"@667/js-owncloud-client": "^0.1.9",
+		"ora": "^5.4.1",
+		"yargs": "^17.1.1"
+	}
+}
