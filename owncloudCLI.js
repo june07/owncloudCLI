@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-if (process.env.NODE_ENV !== 'production') require('dotenv').config();
+if (process.env.NODE_ENV === 'development') require('dotenv').config();
 
 const owncloud = require('@667/js-owncloud-client')
 const yargs = require('yargs')
