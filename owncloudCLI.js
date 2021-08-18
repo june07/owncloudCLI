@@ -6,16 +6,20 @@ const yargs = require('yargs')
 const fs = require('fs')
 const ora = require('ora')
 
+let error
 if (!process.env.OWNCLOUD_USERNAME) {
     console.error('OWNCLOUD_USERNAME env var is unset')
-    process.exit(1)
-} else if (!process.env.OWNCLOUD_PASSWORD) {
-    console.error('OWNCLOUD_PASSWORD env var is unset')
-    process.exit(1)
-} else if (!process.env.OWNCLOUD_URL) {
-    console.error('OWNCLOUD_URL env var is unset')
-    process.exit(1)
+    error = true
 }
+if (!process.env.OWNCLOUD_PASSWORD) {
+    console.error('OWNCLOUD_PASSWORD env var is unset')
+    error = true
+}
+if (!process.env.OWNCLOUD_URL) {
+    console.error('OWNCLOUD_URL env var is unset')
+    error = true
+}
+console.log()
 
 const OWNCLOUD_USERNAME = process.env.OWNCLOUD_USERNAME
 const OWNCLOUD_PASSWORD = process.env.OWNCLOUD_PASSWORD
@@ -42,19 +46,20 @@ const upload = async (sourceFilename, destFilename) => {
 		})
 }
 
-yargs.scriptName('owncloudCLI')
+yargs.scriptName('owncloudcli')
     .usage('$0 <cmd> [args]')
-    .command('upload [sourceFilename] [destFilename]', '', yargs => {
-        yargs.positional('sourceFilename', {
+    .command('upload <source> <dest>', 'Upload source file to owncloud destination.', yargs => {
+        if (error) process.exit(1)
+        yargs.positional('source', {
             type: 'string',
             describe: 'The filename of the source artifact you want to upload.'
         })
-        .positional('destFilename', {
+        .positional('dest', {
             type: 'string',
-            description: 'The absolute filename on the owncloud server where you want to upload your artifact.'
+            describe: 'The absolute filename on the owncloud server where you want to upload your artifact.'
         })
     }, argv => {
-        upload(argv.sourceFilename, argv.destFilename)
+        upload(argv.source, argv.dest)
     })
     .help()
     .argv
