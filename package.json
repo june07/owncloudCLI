@@ -1,6 +1,6 @@
 {
 	"name": "owncloudcli",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Simple CLI to upload CI/CD pipeline artifacts",
 	"main": "owncloudCLI.js",
     "bin:": {
